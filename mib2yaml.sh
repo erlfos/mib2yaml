@@ -11,4 +11,6 @@ do
         snmptranslate -Ts -Pu -m $mib | awk -F"." '{print $NF}' >> /tmp/$mib.s
         snmptranslate -To -Pu -m $mib | sed 's/^\./: /g' >> /tmp/$mib.o
         paste -d "" /tmp/$mib.s /tmp/$mib.o >> /tmp/$mib.yaml
+        rm /tmp/$mib.s
+        rm /tmp/$mib.o
 done
